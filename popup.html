@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Position Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="line-loading">
+      <div class="rainbow-line"></div>
+    </div>
+    <nav>
+      <div class="nav-title">
+        <div class="i-chart"></div>
+        Trading Position Calculator
+      </div>
+      <div id="button-theme" class="icon-theme"></div>
+    </nav>
+    <div class="toggle-group">
+      <button class="toggle-btn long active" data-type="long">Long</button>
+      <button class="toggle-btn short" data-type="short">Short</button>
+    </div>
+    <div class="leverage-row">
+      <label>
+        Leverage
+        <div class="leverage-value-wrap">
+          <input type="number" id="leverage-input" class="leverage-value-input" min="1" max="100" value="20" step="1" />
+          <span class="leverage-value-suffix">x</span>
+        </div>
+      </label>
+      <div class="slider-container">
+        <input type="range" id="leverage-slider" min="1" max="100" value="20" step="1" />
+        <div class="labels">
+          <span>1</span>
+          <span>25</span>
+          <span>50</span>
+          <span>75</span>
+          <span>100</span>
+        </div>
+      </div>
+    </div>
+    <div class="row-in">
+      <label>Quantity</label>
+      <input type="number" id="quantity" step="any" min="0" placeholder="USD" required />
+    </div>
+    <div class="row-in">
+      <label>Entry Price</label>
+      <input type="number" id="entry" step="any" min="0" placeholder="" required />
+    </div>
+    <div class="row-tp-sl">
+      <div class="col">
+        <label>Take Profit Price</label>
+        <input type="number" class="green-text" id="exit" step="any" min="0" placeholder="TP" />
+      </div>
+      <div class="col">
+        <label>Stop Loss Price</label>
+        <input type="number" class="red-text" id="stoploss" step="any" min="0" placeholder="SL" />
+      </div>
+    </div>
+    <div class="calculate-action">
+      <button id="btn-calculate">Calculate</button>
+      <button id="toggle-auto">
+        <svg width="18px" height="18px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12 6C8.69 6 6 8.69 6 12H9L5 16L1 12H4C4 7.58 7.58 4 12 4C13.57 4 15.03 4.46 16.26 5.24L14.8 6.7C13.97 6.25 13.01 6 12 6ZM15 12L19 8L23 12H20C20 16.42 16.42 20 12 20C10.43 20 8.97 19.54 7.74 18.76L9.2 17.3C10.03 17.75 10.99 18 12 18C15.31 18 18 15.31 18 12H15Z"
+            fill="#fff" />
+        </svg>
+      </button>
+    </div>
+    <div class="results">
+      <p id="profit-line">Profit: —</p>
+      <p id="sl-line">SL Risk: —</p>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-note">
+      “Never let a <p class="green-text" style="margin: 0px 4px">green</p> position turn <p class="red-text"
+        style="margin-left: 4px">red</p>”
+    </div>
+    <a href="https://github.com/BehrouzSohrabi/TradingPositionCalculator" target="_blank" class="icon-github"></a>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
