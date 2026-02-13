@@ -23,18 +23,23 @@ body.dark {
   --btn-inactive: #333;
 }
 
-body.dark [class^="icon-"] {
+body.dark .icon-theme,
+body.dark .icon-github {
   filter: invert(100%);
 }
 
 body {
-  width: 330px;
+  width: 100%;
+  min-width: 330px;
+  min-height: 550px;
   margin: 0;
-  padding-bottom: 32px;
+  padding-bottom: 30px;
   background: var(--bg);
   color: var(--text);
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: hidden;
+  overscroll-behavior: none;
+  inset: 0;
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 400;
   font-size: 14px;
@@ -44,6 +49,7 @@ body {
 input[type="number"],
 .leverage-value-input,
 .leverage-value-suffix,
+#Distance-line,
 #position-usd,
 #profit-line,
 #sl-line,
@@ -60,6 +66,7 @@ input[type="number"],
   flex-direction: column;
   gap: 10px;
   margin: 16px;
+  margin-bottom: 0;
 }
 
 .i-chart {
@@ -71,15 +78,13 @@ input[type="number"],
   top: 5px;
   width: 18px;
   height: 18px;
-  margin-right: 4px;
   background-image: url(assets/chart.png);
 }
 
 .nav-title {
   font-family: "JetBrains Mono", "Roboto Mono", monospace;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.2px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .line-loading {
@@ -152,21 +157,47 @@ nav {
   margin: 5px 0;
 }
 
-.icon-theme {
-  width: 20px;
-  height: 20px;
-  position: relative;
-  top: 4px;
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon-btn {
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background-color: transparent !important;
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
   opacity: 0.7;
   transition: opacity 0.2s ease;
 }
 
-.icon-theme:hover {
+.icon-btn:hover {
   opacity: 1;
+}
+
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.icon-theme {
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+body.is-sidepanel #button-sidepanel {
+  display: none;
 }
 
 .toggle-group {
@@ -196,9 +227,19 @@ nav {
   background: var(--green-color);
 }
 
+.toggle-btn.long:hover {
+  background: var(--green-color) !important;
+  color: white;
+}
+
 .toggle-btn.short {
   color: white;
   background: var(--red-color);
+}
+
+.toggle-btn.short:hover {
+  background: var(--red-color) !important;
+  color: white;
 }
 
 .toggle-btn:not(.active) {
@@ -253,7 +294,7 @@ label {
 
 input[type="number"] {
   width: 100%;
-  padding: 10px 12px;
+  padding: 10px 0 10px 12px;
   border: 0px;
   border-radius: 6px;
   background: var(--input-bg);
@@ -308,7 +349,8 @@ input[type="number"] {
   display: block;
 }
 
-.row-tp-sl {
+.row-tp-sl,
+.row-qn-ma {
   display: flex;
   gap: 10px;
 }
@@ -322,7 +364,7 @@ input[type="number"] {
   margin-bottom: 4px;
 }
 
-button {
+button:not(.icon-btn) {
   padding: 12px;
   background: #1976d2;
   color: white;
@@ -332,10 +374,10 @@ button {
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-button:hover {
+button:not(.icon-btn):hover {
   background: #1565c0;
 }
 
@@ -363,7 +405,7 @@ button:hover {
 }
 
 #toggle-auto svg {
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 #toggle-auto.is-on svg {
@@ -374,18 +416,21 @@ button:hover {
   background: var(--btn-inactive);
 }
 
-button:disabled {
+button:not(.icon-btn):disabled {
   background: var(--btn-inactive);
   cursor: not-allowed;
   opacity: 0.75;
 }
 
-button:disabled:hover {
+button:not(.icon-btn):disabled:hover {
   background: var(--btn-inactive);
 }
 
 .results {
   padding: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .results p {
@@ -395,7 +440,7 @@ button:disabled:hover {
 }
 
 .results p span {
-  font-weight: 700;
+  margin-right: 10px;
 }
 
 footer {
@@ -403,6 +448,7 @@ footer {
   display: flex;
   justify-content: space-between;
   bottom: 0;
+  height: 32px;
   left: 0;
   right: 0;
   padding: 0 10px;
@@ -440,4 +486,9 @@ footer {
   height: 20px;
   background-image: url(assets/github.png);
   opacity: 0.5;
+}
+
+#position:focus {
+  border-color: #4caf50;
+  outline: none;
 }
