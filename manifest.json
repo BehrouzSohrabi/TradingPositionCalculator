@@ -12,9 +12,6 @@
   "side_panel": {
     "default_path": "popup.html?view=sidepanel"
   },
-  "background": {
-    "service_worker": "sw.js"
-  },
   "action": {
     "default_title": "Position Calculator",
     "default_popup": "popup.html",

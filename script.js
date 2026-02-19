@@ -319,11 +319,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const pnlColor = pnlUSD >= 0 ? "#0bba74" : "#ff4761";
 
     profitLine.innerHTML = `Profit: <span style="color:${pnlColor}; font-weight:600;">
-      ${formatNumber(pnlUSD)} USDT (${formatNumber(pnlPct)}%)
+      ${formatNumber(pnlUSD)} (${formatNumber(pnlPct)}%)
     </span>`;
 
     slLine.innerHTML = `SL Risk: <span style="color:#ff4761; font-weight:600;">
-      ${formatNumber(slRiskUSD)} USDT (${formatNumber(slRiskPct)}%)
+      ${formatNumber(slRiskUSD)} (${formatNumber(slRiskPct)}%)
     </span>`;
 
     if (tp > 0) {
