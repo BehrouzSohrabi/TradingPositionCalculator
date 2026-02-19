@@ -1,8 +1,11 @@
 {
   "name": "Position Calculator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A lightweight position calculator for trading.",
-  "permissions": ["sidePanel", "windows"],
+  "permissions": [
+    "sidePanel",
+    "windows"
+  ],
   "manifest_version": 3,
   "author": "Behrouz Sohrabi",
   "offline_enabled": true,
